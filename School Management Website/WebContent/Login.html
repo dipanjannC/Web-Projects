@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 20px;
+}
+body {font-family: Arial, Helvetica, sans-serif;
+background-color:#f1f1f3;}
+* {box-sizing: border-box;}
+
+header
+{
+background-color: #00cccc;
+}
+.input-container {
+	overflow:hidden;
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.icon {
+  padding: 15px;
+  background-color: #00cccc;
+  color: black;
+  min-width: 50px;
+  text-align: center;
+  
+}
+
+.input-field {
+  width: 100%;
+  padding: 15px;
+  outline: none;
+  
+}
+
+.input-field:focus {
+  border: 1px solid #ffb3b3;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #00cccc;
+  color:Black ;
+  padding: 15px;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.8;
+  border-radius: 8px;
+}
+.btn-close
+{
+background-color:  #00cccc;
+  border: none;
+  color: black;
+  cursor: pointer;
+  padding: 15px 15px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-danger
+{
+  background-color: #ff1a1a;
+  color:Black ;
+  padding: 15px;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.8;
+  border-radius: 8px;
+  font-size: 13px;}
+}
+
+.btn:hover {
+  opacity: 1.2;
+}
+.btn-danger:hover {
+  opacity: 1.2;
+}
+</style>
+</head>
+<header>
+<div>
+<button type="button" class="btn-close" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+<hr>
+</div>
+</header>
+<body>
+<h2 ><b>Login</b></h2>
+<br>
+
+<form action="Login" method="get" style="max-width:600px;margin:auto">
+  
+  
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" type="text" placeholder="Username" name="user" value="dipanjan" required>
+  </div>
+
+  
+  <div class="input-container">
+    <i class=" 	fa fa-low-vision icon"></i>
+    <input class="input-field" type="password" placeholder="Password" name="password" value="paradox" required>
+  </div>
+  <br>
+<hr>
+  <button type="submit" class="btn "><b>Login</b></button>
+  <button type="reset" class="btn-danger " ><b>Cancel</b></button>
+</form>
+ 
+
+</body>
+</html>

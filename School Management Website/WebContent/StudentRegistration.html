@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>student registration</title>
+<style>
+textDecoration {
+  text-decoration: none;
+}
+option {
+  	background: #f1f1f1;
+    display: block;
+    float: left;
+    padding: 1rem;
+    position: relative;
+   	transition-duration: 0.5s;
+}
+nav {
+    font-family: monospace;
+}
+
+
+input[type=text], input[type=password],
+input[type=number],
+textarea{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus,input[type=password]:focus,
+input[type=number]:focus,
+textarea:focus{
+  background-color: #ddd;
+  outline: none;
+}
+select{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 20px;
+}
+
+.loginbtn {
+  background-color: #00cccc;
+  color: white;
+  padding: 16px 20px;
+  margin: 3px 0;
+  border: none;
+  cursor:pointer;
+  width: 100%;
+  opacity: 0.8;
+}
+.loginbtn:hover
+{
+	opacity:1;
+}
+.registerbtn {
+  background-color: #ff1a1a;
+  color: white;
+  padding: 16px 20px;
+  margin: 3px 0;
+  border: none;
+  cursor:pointer;
+  width: 100%;
+  opacity: 0.8;
+}
+.registerbtn:hover
+{
+	opacity:1;
+}
+
+</style>
+</head>
+<h1>Register Student</h1>
+<body>
+
+	<form action="DBinsert" method="get">
+		
+		<div>
+		<label for="name" >Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter Name" required>
+  	<br>
+  	<hr>
+  	  </div>
+		
+		<div>
+		 <label for="age">Age:</label><br> 
+		 <input type="number" name="age" placeholder="Enter Age" required/>
+    	<br>
+    	<hr>
+    	</div>
+	
+		<div>
+		Gender:<br> <br> 
+		<input type="radio" name="gender" value="male" /> Male
+		<input type="radio" name="gender" value="female" />Female
+		<input type="radio" name="gender" value="other" /> Other 
+		<br>
+		<hr>
+		</div>
+		
+		
+		<div>
+		  Address:
+		   <br>
+		<textarea name="address"  cols="30" placeholder="Enter Address"></textarea>
+		<br>
+		<hr> 
+		</div>
+		
+		<div>
+		Country:
+		<br>
+		<select name="country" required>
+			<option value="India">India</option>
+			<option value="USA">United State of America</option>
+			<option value="UK">United Kingdom</option>
+			<option value="Australia">Australia</option>
+			<option value="Germany">Germany</option>
+			<option value="Finland">Finland</option>
+			<option value="South Africa">South Africa</option>
+		</select> 
+		<br>
+		<hr>
+		</div> 
+		<div>
+		Hobbies:
+		<br>
+		<input type="checkbox" name="hobby_option" value="Music" />  Music<hr>
+        <input type="checkbox" name="hobby_option" value="Dancing" />  Dancing<hr>
+        <input type="checkbox" name="hobby_option" value="Traveling"/>  Traveling<hr> 
+        <input type="checkbox" name="hobby_option" value="Learning" />  Learning<hr> 
+        <input type="checkbox" name="hobby_option" value="Photography" />  Photography<hr>
+		<input type="checkbox" name="hobby_option" value="Sports" />  Sports<hr>
+        <input type="checkbox" name="hobby_option" value="Hiking" />  Hiking<hr>
+        <input type="checkbox" name="hobby_option" value="Cooking" />  Cooking<hr>
+        <input type="checkbox" name="hobby_option" value="Psychology" />  Psychology<hr>
+       </div>
+       <input type="submit" name="register" value="REGISTER"  class="registerbtn" /> 
+        <input type="submit" name="login" value="LOGIN" class="loginbtn" disabled />
+
+	</form>
+
+
+</body>
+</html>

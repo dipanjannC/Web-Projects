@@ -1,0 +1,345 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="com.sms.controller.LoginServlet" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Management Page</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+<style>
+ p {
+  word-spacing: 5px;
+}
+.header{
+background-color:#009999;
+}
+.nav-bar
+{
+
+overflow: hidden;
+background-color: #77C9D3;
+padding: 10px 18px;
+}
+
+.nav-bar:hover
+{
+opacity:0.6;
+}
+
+/* FORM CSS */
+ textDecoration {
+  text-decoration: none;
+}
+option {
+  	background: #f1f1f1;
+    display: block;
+    float: left;
+    padding: 1rem;
+    position: relative;
+   	transition-duration: 0.5s;
+}
+nav {
+    font-family: monospace;
+}
+
+
+input[type=text], input[type=password],
+input[type=number],
+textarea{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus,input[type=password]:focus,
+input[type=number]:focus,
+textarea:focus{
+  background-color: #ddd;
+  outline: none;
+}
+select{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 20px;
+}
+
+.loginbtn {
+  background-color: #00cccc;
+  color: white;
+  padding: 16px 20px;
+  margin: 3px 0;
+  border: none;
+  cursor:pointer;
+  width: 100%;
+  opacity: 0.8;
+}
+.loginbtn:hover
+{
+	opacity:1;
+}
+.registerbtn {
+  background-color: #ff1a1a;
+  color: white;
+  padding: 16px 20px;
+  margin: 3px 0;
+  border: none;
+  cursor:pointer;
+  width: 100%;
+  opacity: 0.8;
+}
+.registerbtn:hover
+{
+	opacity:1;
+} 
+</* FORM CSS*/>
+</style>
+
+</head>
+<header class="header">
+<div>
+	<h4 align="right">
+     <!-- Button to Open Logout Modal -->
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#logoutModal">
+ Logout
+  </button>
+      <!-- Button to Open Login Modal -->
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#registrationModal" disabled>
+ Login
+  </button>
+  	</h4>
+    
+ </div> 
+ 
+
+		<!-- Navigation -->
+<div>
+<nav class="navbar navbar-expand-sm bg-info navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item ">
+      <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#registrationModal">Sign Up</button>
+    </li>
+    
+    <li class="nav-item">
+      <a href="http://localhost:8282/School_Management_Website/FetchServlet" class="nav-link" target="display">List All</a>
+    </li>
+    <li class="nav-item">
+      <a href="http://localhost:8282/School_Management_Website/Delete.html" class="nav-link" target="display">Delete</a>
+    </li>
+    <li class="nav-item">
+      <a href="http://localhost:8282/School_Management_Website/UpdateForm.html" class="nav-link" target="display">Update</a>
+    </li>
+   <!--   <li class="nav-item"> 
+    	<!-- Button to Open the Modal -->
+  <!--  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateModal">  Update</button>	--> 
+
+   <!--   </li>-->
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+  </ul>
+</nav>
+</div>
+</header>
+	<!-- Navigation -->
+
+<div>
+<h1>Student Management</h1>
+ 
+<p align="right">Hi <c:out value='${sessionScope.user}'/></p>
+</div>
+
+
+      
+  <!-- The Modal -->
+  
+  		<!--Update Modal-->
+  <div class="modal fade" id="updateModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Update Details</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <!--Update Modal-->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  		<!--Update Modal-->
+
+		<!--Registration Modal-->
+  <div class="modal fade" id="registrationModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Student Registration Form</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <!--Update Modal-->
+        <div class="modal-body">
+          
+				<!--REGISTRATION FORM-->
+
+	
+	<form action="DBinsert" method="get">
+		
+		<div>
+		<label for="name" >Name:</label><br>
+      <input type="text" class="form-control" name="name" placeholder="Enter Name" required>
+  	<br>
+  	<hr>
+  	  </div>
+		
+		<div>
+		 <label for="age">Age:</label><br> 
+		 <input type="number" name="age" placeholder="Enter Age" required/>
+    	<br>
+    	<hr>
+    	</div>
+	
+		<div>
+		Gender:<br> <br> 
+		<input type="radio" name="gender" value="male" /> Male
+		<input type="radio" name="gender" value="female" />Female
+		<input type="radio" name="gender" value="other" /> Other 
+		<br>
+		<hr>
+		</div>
+		
+		
+		<div>
+		  Address:
+		   <br>
+		<textarea name="address"  cols="30" placeholder="Enter Address"></textarea>
+		<br>
+		<hr> 
+		</div>
+		
+		<div>
+		Country:
+		<br>
+		<select name="country" required>
+			<option value="India">India</option>
+			<option value="USA">United State of America</option>
+			<option value="UK">United Kingdom</option>
+			<option value="Australia">Australia</option>
+			<option value="Germany">Germany</option>
+			<option value="Finland">Finland</option>
+			<option value="South Africa">South Africa</option>
+		</select> 
+		<br>
+		<hr>
+		</div> 
+		<div>
+		Hobbies:
+		<br>
+		<br>
+		<input type="checkbox" name="hobby_option" value="Music" />  Music<hr>
+        <input type="checkbox" name="hobby_option" value="Dancing" />  Dancing<hr>
+        <input type="checkbox" name="hobby_option" value="Traveling"/>  Traveling<hr> 
+        <input type="checkbox" name="hobby_option" value="Learning" />  Learning<hr> 
+        <input type="checkbox" name="hobby_option" value="Photography" />  Photography<hr>
+		<input type="checkbox" name="hobby_option" value="Sports" />  Sports<hr>
+        <input type="checkbox" name="hobby_option" value="Hiking" />  Hiking<hr>
+        <input type="checkbox" name="hobby_option" value="Cooking" />  Cooking<hr>
+        <input type="checkbox" name="hobby_option" value="Psychology" />  Psychology<hr>
+       </div>
+       <input type="submit" name="register" value="REGISTER"  class="registerbtn" /> 
+        <input type="submit" name="login" value="LOGIN" class="loginbtn" disabled />
+
+	</form>
+
+					<!--REGISTRATION FORM-->
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  		<!--Update Modal-->
+
+  		<!--Logout Modal-->
+  <div class="modal fade" id="logoutModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Logout</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <!--Update Modal-->
+        <div class="modal-body">
+          <hr>
+          Are you Sure?
+          <br>
+          <hr>
+          <form action="Logout" method="get">
+         <input type="submit" name="logout-option" value="Yes" class="btn btn-info btn-block"/>
+         <br>
+  		<input type="submit" name="logout-option" value="No" class="btn btn-info btn-block">
+    	</form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  		<!--Logout Modal-->
+
+		<!--The Modal-->
+
+
+<body>
+<iframe height="500px" width="100%" src="demo_iframe.htm" name="display"></iframe>
+
+
+
+
+</body>
+</html>
