@@ -19,8 +19,8 @@ public class DatabaseValidationDao {
     	try {
     		
     		statement=connect.createStatement();
-			resultset=statement.executeQuery("select * from admin_details where "
-													+ "(user_admin='"+username
+			resultset=statement.executeQuery("select * from user_details where "
+													+ "(user_name='"+username
 													+"' and user_password='"+password+"')");
 			 if(resultset.next())
 		    	{
