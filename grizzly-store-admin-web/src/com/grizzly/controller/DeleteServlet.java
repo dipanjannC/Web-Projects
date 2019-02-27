@@ -14,20 +14,28 @@ import com.grizzly.dao.ProductManagementDao;
 import com.grizzly.pojo.ProductDetailsPojo;
 
 /**
- * Servlet implementation class FetchServlet
+ * Servlet implementation class DeleteServlet
  */
-@WebServlet("/FetchServlet")
-public class FetchServlet extends HttpServlet {
+@WebServlet("/DeleteServlet")
+public class DeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<ProductDetailsPojo> productsViewAdmin=ProductManagementDao.fetchProducts();
+
 		
+		int productId=Integer.parseInt(request.getParameter("productId"));
+		System.out.println("DeleteServlet ID:"+productId);
+		
+		ProductManagementDao.delete(productId);
+		
+		ArrayList<ProductDetailsPojo> productsViewAdmin=ProductManagementDao.fetchProducts();
+			
 		RequestDispatcher requestDispatcher=request.getRequestDispatcher("testFetch.jsp");
 		request.setAttribute("productsViewAdmin", productsViewAdmin);
 		requestDispatcher.forward(request, response);
 	}
 
+	
 }

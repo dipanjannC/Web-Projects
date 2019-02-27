@@ -14,17 +14,16 @@ import javax.servlet.http.HttpSession;
 import com.grizzly.dao.DatabaseValidationDao;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class Login
  */
-
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
 		int failedLoginAttempts=0;
@@ -47,11 +46,11 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("username", username);
 			
 			
-			out.println("<h2>Login Successfull<h2>");
+			
 			//Requesting the Dispatcher	
 			
-			//RequestDispatcher requestDispatcher=request.getRequestDispatcher("Home.jsp");
-			//requestDispatcher.forward(request, response);
+			RequestDispatcher requestDispatcher=request.getRequestDispatcher("FetchServlet");
+			requestDispatcher.forward(request, response);
 			
 			
 		}
@@ -60,9 +59,10 @@ public class LoginServlet extends HttpServlet {
 			//out.println("<h2>Login Failed<h2>");
 			failedLoginAttempts++;
 			System.out.println(failedLoginAttempts);
+			
 			if(failedLoginAttempts<3)
 			{
-				RequestDispatcher requestDispatcher=request.getRequestDispatcher("login.html");
+				RequestDispatcher requestDispatcher=request.getRequestDispatcher("Login.html");
 				requestDispatcher.forward(request, response);
 			}
 			else
@@ -73,8 +73,4 @@ public class LoginServlet extends HttpServlet {
 		
 	}
 
-	
-	
-	
 }
-
